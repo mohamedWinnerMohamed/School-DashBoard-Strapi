@@ -4,7 +4,7 @@
   "info": {
     "singularName": "class",
     "pluralName": "classes",
-    "displayName": "Class"
+    "displayName": "Classes"
   },
   "options": {
     "draftAndPublish": true
@@ -15,11 +15,37 @@
       "type": "string",
       "required": true
     },
+    "grade": {
+      "type": "string",
+      "required": true
+    },
+    "supervisor": {
+      "type": "string",
+      "required": false
+    },
+    "classId": {
+      "type": "string",
+      "required": true
+    },
     "teachers": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::teacher.teacher",
+      "private": true,
       "inversedBy": "classes"
+    },
+    "students": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student.student",
+      "mappedBy": "class"
+    },
+    "capacity": {
+      "type": "string"
+    },
+    "full": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
